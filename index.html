@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Web JS - Augmented Reality</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/three.js"></script>
+		<!-- include jsartookit -->
+		<script src="jsartoolkit5/artoolkit.min.js"></script>
+		<script src="jsartoolkit5/artoolkit.api.js"></script>
+		<!-- include threex.artoolkit -->
+		<script src="threex/threex-artoolkitsource.js"></script>
+		<script src="threex/threex-artoolkitcontext.js"></script>
+		<script src="threex/threex-arbasecontrols.js"></script>
+		<script src="threex/threex-armarkercontrols.js"></script>
+	</head>
+
+	<body>
+		<div class="main">
+			<nav class="navbar navbar-dark bg-primary">
+				<a class="navbar-brand" href="#">
+					Web Augmented Reality Project
+					<span class="clientname">Client: David Thomas</span>
+				</a>
+			</nav>
+			<div class="header">
+				<ul id="navigation" class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link" data-id="qrcodes-main" href="ar.php">AR</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-id="content-form" href="javascript:"
+							>Content</a
+						>
+					</li>
+				</ul>
+			</div>
+			<div id="qrcodes-main" class="content container" style="display: none;">
+				<div class="row">
+					<div id="qrcodes" class="col">
+						<div class="d-flex justify-content-center">
+							<div class="spinner-border" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center p-5">
+					<blockquote class="blockquote text-center">
+						<p class="mb-0">Taking you to AR MODE</p>
+						<footer class="blockquote-footer">
+							Thanks to
+							<cite title="Source Title">David Thomas</cite>
+						</footer>
+					</blockquote>
+				</div>
+			</div>
+			<div id="content-form" class="container content">
+				<form action="upload.php" method="post" enctype="multipart/form-data">
+					<div class="mb-3 form-row">
+						<label for="validationTextarea">Text</label>
+						<textarea
+							class="form-control"
+							id="text"
+							name="text"
+							placeholder="Enter text for augmenting on qr code e.g. 'Lorem Ipsum'"
+							required
+						></textarea>
+						<div class="valid-feedback">
+							Looks good
+						</div>
+						<div class="invalid-feedback">
+							Enter text
+						</div>
+					</div>
+					<div class="mb-3 form-row">
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom01">Text Color</label>
+							<input
+								type="text"
+								placeholder="Enter hexdecimal color code e.g. #ffffff"
+								class="form-control"
+								id="validationCustom01"
+								name="color"
+								required
+							/>
+							<div class="valid-feedback">
+								Looks good!
+							</div>
+							<div class="invalid-feedback">
+								Enter text color
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Text Position</label>
+							<input
+								type="text"
+								placeholder="Enter text position relative from center e.g. '1 1' for 1 unit from top and left"
+								class="form-control"
+								id="validationCustom02"
+								name="text-position"
+								required
+							/>
+							<div class="invalid-feedback">
+								Enter text position for augmenting on QR Code
+							</div>
+							<div class="valid-feedback">
+								Looks good
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<label for="validationCustom02">Text Size</label>
+							<input
+								type="text"
+								placeholder="Enter text size e.g. 2 for 2 times bigger"
+								class="form-control"
+								id="validationCustom02"
+								name="text-size"
+								required
+							/>
+							<div class="invalid-feedback">
+								Enter text size
+							</div>
+							<div class="valid-feedback">
+								Looks good
+							</div>
+						</div>
+					</div>
+					<div class="form-row custom-file mb-3">
+						<input
+							type="file"
+							class="custom-file-input"
+							id="validatedCustomFile"
+							name="icon"
+							required
+						/>
+						<label class="custom-file-label" for="validatedCustomFile"
+							>Upload Icon file...</label
+						>
+						<div class="invalid-feedback">
+							invalid file format
+						</div>
+					</div>
+					<div class="form-row mb-3">
+						<div class="col-md-6 mb-3">
+							<label for="validationCustom02">Icon Size</label>
+							<input
+								type="text"
+								placeholder="Enter image size e.g. 2 for 2 times bigger"
+								class="form-control"
+								id="validationCustom02"
+								name="icon-size"
+								required
+							/>
+							<div class="invalid-feedback">
+								Enter image size
+							</div>
+							<div class="valid-feedback">
+								Looks good
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="validationCustom02">Icon Position</label>
+							<input
+								type="text"
+								placeholder="Enter icon position relative from center e.g. '1 1' for 1 unit from top and left"
+								class="form-control"
+								id="validationCustom02"
+								name="icon-position"
+								required
+							/>
+							<div class="invalid-feedback">
+								Enter image position for augmenting on QR Code
+							</div>
+							<div class="valid-feedback">
+								Looks good
+							</div>
+						</div>
+					</div>
+					<button class="btn btn-primary" type="submit">Generate Marker</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
