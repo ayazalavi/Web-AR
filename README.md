@@ -1,2 +1,2 @@
 # Web-AR
-This project involves generating QR code and load text and image contents via three.js. For generating QR code we are using Endroid php library.
+This is Web AR project develped using threejs and artoolkit. It allows user to generate qr codes and display contents including text and icon over the generated qr codes. Tech stack includes Javascript, PHP, Threejs, ARtoolkit, Endroid (for generating qr codes).
